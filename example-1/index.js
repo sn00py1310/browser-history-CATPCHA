@@ -3,12 +3,34 @@ function setup() {
     const links_list = [
         "",
         window.location.href,
-        "//www.google.de",
         "//www.google.com",
-        "//instagram.com",
-        "//facebook.com",
-        "//www.youtube.com/watch?v=dQw4w9WgXcQ",
-        "//www.youtube.com/watch?v=dQw4w9WgXcQq"
+        "//www.facebook.com",
+        "//www.youtube.com",
+        "//www.yahoo.com",
+        "//www.wikipedia.org",
+        "//twitter.com",
+        "//slashdot.org",
+        "//www.google.co.in",
+        "//world.taobao.com",
+        "//outlook.live.com",
+        "//www.yahoo.co.jp",
+        "//www.linkedin.com",
+        "//weibo.com",
+        "//www.ebay.com",
+        "//www.google.co.jp",
+        "//yandex.ru",
+        "//www.bing.com",
+        "//m.vk.com",
+        "//www.google.de",
+        "//www.instagram.com",
+        "//t.co",
+        "//www.msn.com",
+        "//www.google.co.uk",
+        "//www.pinterest.com",
+        "//www.ask.com",
+        "//www.reddit.com",
+        "//wordpress.com",
+        "//mail.ru",
         ]
     
     let words_list = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
@@ -39,15 +61,10 @@ function create_links_dict(words, links) {
 
     shuffle(words);
     shuffle(links);
-
     link_dict = {}
-
     words.forEach((key, i) => link_dict[key] = links[i]);
     
-
     return link_dict
-
-
 }
 
 
@@ -63,7 +80,6 @@ function create_docs(link_dict) {
         link_dict[key] == "" ? new_element.classList.add("history-positive"): new_element.classList.add("history-test-link")
         parent_div.appendChild(new_element);
     }
-
 }
 
 function form_submit(event) {
@@ -72,8 +88,6 @@ function form_submit(event) {
     const form_data = new FormData(event.target);
     const form_data_dict = {}
     form_data.forEach((value, key) => form_data_dict[key] = value)
-    
-    //console.log(form_data_dict)
 
     let words_input = form_data_dict["captcha-form-words"].toLowerCase().split("");
     let websites = [];
@@ -85,57 +99,17 @@ function form_submit(event) {
     })
 
     if (!websites.includes("")) {
-        //console.log("CAPTCHA not fully made");
         document.querySelector("#captcha-error").style.display = "block";
     } else {
         websites = [...new Set(websites)];
-        //console.log(websites);
         // remove empty string
         websites = websites.filter(function(item) {
             return item !== ""
         })
-        //console.log(websites)
         send_to_server(websites);
         document.querySelector("#captcha-error").style.display = "none";
         document.querySelector("#captcha-success").style.display = "block";
     }
-}
-
-
-function send_to_server(websites) {
-    const urlSearchParams = new URLSearchParams(window.location.search);
-    const params = Object.fromEntries(urlSearchParams.entries());
-
-    let ref = ""
-    "ref" in params ? ref = params["ref"]: null;
-
-    let websites_base64 = btoa(JSON.stringify(websites));
-    let data = { "a": websites_base64 }
-    fetch(`/data?ref=${ref}`, {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-            "Content-Type": "application/json"
-        }
-    })
-
-}
-
-
-/**
- * Shuffles array in place.
- * @param {Array} a items An array containing the items.
- * https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array
- */
-function shuffle(a) {
-    var j, x, i;
-    for (i = a.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        x = a[i];
-        a[i] = a[j];
-        a[j] = x;
-    }
-    return a;
 }
 
 setup();

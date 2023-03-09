@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAPTCHA Test</title>
+    <link rel="stylesheet" href="./index.css">
+    <script src="../js/default.js" defer></script>
+    <script src="./index.js" defer></script>
+</head>
+<body>
+    <h1 style="color: var(--color-history-visited);">CAPTCHA Test</h1>
+    <h2 style="color: var(--color-history-visited);">Click on all the red boxes</h2>
+    <div id="captcha" class="captcha">
+        <form id="captcha-form">
+            <button id="captcha-form-button">Senden</button>
+        </form>
+    </div>
+    <div id="captcha-success" class="captcha-success" style="display: none;">
+        <span id="captcha-success-text">Success!</span>
+    </div>
+    <div id="captcha-error" class="captcha-error" style="display: none;">
+        <span id="captcha-error-text">Click on all boxes</span>
+    </div>
+    <div id="history-test" class="history-test"></div>
+</body>
+</html>

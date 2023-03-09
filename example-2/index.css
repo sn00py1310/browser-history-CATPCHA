@@ -1,0 +1,66 @@
+:root {
+    --color-history-bg: black;
+    --color-history-visited: red;
+}
+
+body {
+    background-color: var(--color-history-bg);
+    color: white;
+}
+
+.captcha-error {
+    color: var(--color-history-visited);;
+    font-weight: 500;
+    font-size: 4em;
+}
+
+.captcha-success {
+    color: green;
+    font-weight: 500;
+    font-size: 4em;
+}
+
+.captcha{
+    position: sticky;
+    top: 0;
+}
+
+.history-test {
+    font-size: 3em;
+    margin: 0.25em;
+    border: 5px solid var(--color-history-visited);
+    word-wrap: break-word;
+    
+}
+
+.history-link {
+    font-family: monospace;
+    text-decoration: none;
+    margin: 0.5em;
+    /*cursor: default;
+    pointer-events: none;*/
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.history-test-link:not(.history-link-clicked):link{
+    color: var(--color-history-bg);
+}
+
+.history-test-link:not(.history-link-clicked):visited {
+    color: var(--color-history-visited);
+}
+
+.history-link-clicked {
+    color: var(--color-history-bg);
+}
+
+.history-positive:not(.history-link-clicked) {
+    color: var(--color-history-visited);
+}
